@@ -1,3 +1,4 @@
+import MainPage from '@/components/pages/MainPage';
 import { Metadata } from 'next';
 
 const getData = async (path: string) => {
@@ -28,8 +29,8 @@ interface PropsType {
 }
 
 const HomePage = async ({ params }: PropsType) => {
-    const { properties } = await getData(params.path);
-    return <h1>{properties.title}</h1>
+    const data = await getData(params.path);
+    return <MainPage {...data} />
 }
 
 export default HomePage;

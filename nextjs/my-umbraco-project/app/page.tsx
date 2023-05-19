@@ -1,8 +1,9 @@
+import MainPage from '@/components/pages/MainPage';
 import { Metadata } from 'next';
 import Link from 'next/link';
 
 const getData = async () => {
-  const res = await fetch('http://localhost:19938/umbraco/delivery/api/v1/content/item/', { cache: 'no-store' });
+  const res = await fetch(`${process.env.API_URL}content/item/`, { cache: 'no-store' });
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
 
@@ -25,9 +26,9 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const HomePage = async () => {
-  const { properties } = await getData();
+  const data = await getData();
   return <div>
-    <h1>{properties.title}</h1>
+    <MainPage {...data} />
     <Link href="content">Content</Link>
   </div>;
 }
