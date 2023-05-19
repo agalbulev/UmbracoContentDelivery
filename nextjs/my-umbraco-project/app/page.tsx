@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 const getData = async () => {
-  const res = await fetch(`${process.env.API_URL}content/item/`, { cache: 'no-store' });
+  const res = await fetch(`${process.env.API_URL}/content/item/`, { next: { tags: ['umbraco'] } });
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
 
