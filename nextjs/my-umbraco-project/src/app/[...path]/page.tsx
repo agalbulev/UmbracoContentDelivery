@@ -22,7 +22,7 @@ const getData = async (path: string) => {
 
 export async function generateMetadata({ params }: PropsType): Promise<Metadata> { 
   // fetch data
-  const { properties } = await getData(params.path);
+  const { properties } = await getData(params.path.join("/"));
  
   return {
     title: properties.title,
@@ -30,11 +30,11 @@ export async function generateMetadata({ params }: PropsType): Promise<Metadata>
 }
 
 interface PropsType {
-  params: { [key: string]: string };
+  params: { [key: string]: string[] };
 }
 
 const HomePage = async ({ params }: PropsType) => {
-    const data = await getData(params.path);
+    const data = await getData(params.path.join("/"));
     return <MainPage {...data} />
 }
 
