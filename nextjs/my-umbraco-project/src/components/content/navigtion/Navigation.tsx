@@ -5,16 +5,17 @@ import Link from "next/link";
 
 interface PropsType {
     startItem: IUmbracoRoute;
+    culture: string;
 }
 
 interface IContent {
     links: IUmbracoUrl[];
 }
 
-const getNavigation = async (id: string) => {
+const getNavigation = async (id: string, culture: string) => {
     const res = await fetch(`${process.env.API_URL}/content?fetch=descendants:${id}&filter=contentType:navigation`, {
         headers: {
-            'Accept-Language': 'en-US'
+            'Accept-Language': culture
         },
         next: { tags: ['umbraco'] }
     })
@@ -26,19 +27,19 @@ const getNavigation = async (id: string) => {
     return res.json();
 }
 
-const Navigation = async ({ startItem }: PropsType) => {
-    const item = await getNavigation(startItem.startItem.id) as IUmbracoFatchContent<IContent>;
+const Navigation = async ({ startItem, culture }: PropsType) => {
+    const item = await getNavigation(startItem.startItem.id, culture) as IUmbracoFatchContent<IContent>;
 
     if (item.total === 0) {
         return <></>;
     }
-    
+
     const navigation = item.items[0];
 
-    return <div>
+    return <div className="flex justify-center py-8">
         {
             navigation.properties.links.map(link => (
-                <Link title={link.title} href={link.route.path}>{link.title}</Link>
+                <Link className="rounded-lg mx-4 px-3 py-2 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900" title={link.title} href={link.route.path}>{link.title}</Link>
             ))
         }
     </div>

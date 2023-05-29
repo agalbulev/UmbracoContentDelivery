@@ -1,4 +1,4 @@
-import MainPage from '@/components/pages/MainPage';
+import MainPage from '@/src/components/pages/MainPage';
 import { Metadata } from 'next';
 import Link from 'next/link';
 
