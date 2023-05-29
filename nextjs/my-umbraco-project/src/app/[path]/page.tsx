@@ -1,4 +1,4 @@
-import MainPage from '@/components/pages/MainPage';
+import MainPage from '../../components/pages/MainPage';
 import { Metadata } from 'next';
 
 const getData = async (path: string) => {
