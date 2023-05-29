@@ -2,7 +2,12 @@ import MainPage from '@/components/pages/MainPage';
 import { Metadata } from 'next';
 
 const getData = async (path: string) => {
-    const res = await fetch(`${process.env.API_URL}/content/item/${path}`, { next: { tags: ['umbraco'] } });
+    const res = await fetch(`${process.env.API_URL}/content/item/${path}`, { 
+      headers: {
+        'Accept-Language': ''
+      },
+      next: { tags: ['umbraco'] }
+    });
     // The return value is *not* serialized
     // You can return Date, Map, Set, etc.
    
