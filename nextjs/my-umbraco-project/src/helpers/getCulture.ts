@@ -1,6 +1,6 @@
 import IUmbracoRoute from "../interfaces/IUmbracoRoute";
 
-const getCulture = (path: string, cultures: { [key: string]: IUmbracoRoute } ) => {
+const getCulture = (path: string, cultures: { [key: string]: IUmbracoRoute }) => {
     const keys = Object.keys(cultures);
     let culture = 'en-us';
 

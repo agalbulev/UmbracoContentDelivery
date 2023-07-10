@@ -39,7 +39,12 @@ const Navigation = async ({ startItem, culture }: PropsType) => {
     return <div className="flex justify-center py-8">
         {
             navigation.properties.links.map(link => (
-                <Link className="rounded-lg mx-4 px-3 py-2 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900" title={link.title} href={link.route.path}>{link.title}</Link>
+                <Link className="rounded-lg mx-4 px-3 py-2 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900"
+                    title={link.title}
+                    href={link.route.path}
+                    target={link.target}>
+                    {link.title}
+                </Link>
             ))
         }
     </div>
