@@ -1,10 +1,8 @@
 import ContentPage from "./ContentPage"
-import LoginPage from "./LoginPage";
 
 const pages: { [key: string]: (object: any) => JSX.Element } = {
     'homePage': ContentPage,
-    'contentPage': ContentPage,
-    'loginPage': LoginPage
+    'contentPage': ContentPage
 }
 
 const MainPage = (props: any) => {
